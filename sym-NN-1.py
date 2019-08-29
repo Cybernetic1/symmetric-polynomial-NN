@@ -1,4 +1,4 @@
-# symmetric quadratic NN
+# symmetric NN test 1
 
 import numpy as np
 
