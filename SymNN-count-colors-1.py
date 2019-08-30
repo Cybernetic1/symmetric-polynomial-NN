@@ -1,9 +1,9 @@
 # symmetric linear NN -- count colors
 
-import numpy as np
-
 # equation is of the form y = A x
 # we want to count the number of colors in the (2D) matrix A
+
+import numpy as np
 
 # There are 3 x 3 = 9 weights in the 2D matrix A
 colors = [[i] for i in range(1,10)]

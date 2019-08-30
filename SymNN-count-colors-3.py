@@ -1,9 +1,7 @@
 # Count Colors
 # symmetric quatratic NN
 
-# import numpy as np
-
-# equation is of the form y = <A x, x>
+# equation is of the form y = 〈A x, x〉
 # we want to count the number of colors in the 3D matrix A
 
 print("N = ?", end="")
