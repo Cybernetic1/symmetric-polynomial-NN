@@ -59,7 +59,7 @@ Quadratic, corrected version.  SUCCESS for n = 3.
 
 sym-NN-7.py
 -----------
-Quadratic, algebraic version.  SUCCESS for all n.
+Quadratic, "algebraic" version.  This is evolved from the `count-colors` code.  SUCCESS for all n.
 
 sym-NN-8.py
 -----------
