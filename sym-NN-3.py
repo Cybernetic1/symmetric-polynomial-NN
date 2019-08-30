@@ -1,12 +1,12 @@
-# symmetric quadratic NN, test 3
-
-import numpy as np
+# symmetric NN, test 3, linear case.
 
 # The matrix M is of the form:
 #	a b c
 #	b a d
 #	c d a
 # test result is that this is NOT equivariant
+
+import numpy as np
 
 a = np.random.rand(1)
 b = np.random.rand(1)

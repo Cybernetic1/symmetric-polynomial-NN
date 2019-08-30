@@ -3,13 +3,13 @@
 # This version includes the i ≤ j condition, ie, the commutative xᵢxⱼ = xⱼxᵢ condition is built-in.
 # This reduces the number of weights needed to represent the matrices.
 
-import numpy as np
-
 # The matrix A is 3-dimensional
 # consisting of N blocks, each of size (N ⨉  N)
 # satisfying the "colorful" constraints in my PDF file
 # We want to show that this is EQUIVARIANT
 # ********* Test result is SUCCESS *********
+
+import numpy as np
 
 print("N = ?", end="")
 N = int(input())
