@@ -10,6 +10,7 @@
 # ********* Test result is SUCCESS *********
 
 import numpy as np
+import random
 
 print("N = ?", end="")
 N = int(input())
@@ -110,80 +111,95 @@ for h in range(0, N):
 		for i in range(0, N):
 
 			if h < k:
+				continue
 				# 1 (CYAN in CYAN)
-				if i > k:
-					left = find_index(k,k,i)
-					right = find_index(h,h,i)
-					make_same_color(left, right)
+				# if i > k:
+					# left = find_index(k,k,i)
+					# right = find_index(h,h,i)
+					# make_same_color(left, right)
 
 				# 2 (OLIVE in OLIVE)
-				if i > k:
-					left = find_index(k,h,i)
-					right = find_index(h,k,i)
-					make_same_color(left, right)
+				# if i > k:
+					# left = find_index(k,h,i)
+					# right = find_index(h,k,i)
+					# make_same_color(left, right)
 
 				# 3 (RED in RED)
-				if i < h:
-					left = find_index(k,i,k)
-					right = find_index(h,i,h)
-					make_same_color(left, right)
+				# if i < h:
+					# left = find_index(k,i,k)
+					# right = find_index(h,i,h)
+					# make_same_color(left, right)
 
 				# 4 (BLUE in BLUE)
-				if i < h:
-					left = find_index(k,i,h)
-					right = find_index(h,i,k)
-					make_same_color(left, right)
+				# if i < h:
+					# left = find_index(k,i,h)
+					# right = find_index(h,i,k)
+					# make_same_color(left, right)
 
 				# 5 (RED in CYAN)
-				if h < i and i < k:
-					left = find_index(k,i,k)
-					right = find_index(h,h,i)
-					make_same_color(left, right)
+				# if h < i and i < k:
+					# left = find_index(k,i,k)
+					# right = find_index(h,h,i)
+					# make_same_color(left, right)
 
 				# 6 (OLIVE in BLUE)
-				if h < i and i < k:
-					left = find_index(k,h,i)
-					right = find_index(h,i,k)
-					make_same_color(left, right)
+				# if h < i and i < k:
+					# left = find_index(k,h,i)
+					# right = find_index(h,i,k)
+					# make_same_color(left, right)
 
 			elif k < h:
+				continue
 				# 1 (CYAN in CYAN)
-				if i > h:
-					left = find_index(k,k,i)
-					right = find_index(h,h,i)
-					make_same_color(left, right)
+				# if i > h:
+					# left = find_index(k,k,i)
+					# right = find_index(h,h,i)
+					# make_same_color(left, right)
 
 				# 2 (OLIVE in OLIVE)
-				if i > h:
-					left = find_index(k,h,i)
-					right = find_index(h,k,i)
-					make_same_color(left, right)
+				# if i > h:
+					# left = find_index(k,h,i)
+					# right = find_index(h,k,i)
+					# make_same_color(left, right)
 
 				# 3 (RED in RED)
-				if i < k:
-					left = find_index(k,i,k)
-					right = find_index(h,i,h)
-					make_same_color(left, right)
+				# if i < k:
+					# left = find_index(k,i,k)
+					# right = find_index(h,i,h)
+					# make_same_color(left, right)
 
 				# 4 (BLUE in BLUE)
-				if i < k:
-					left = find_index(k,i,h)
-					right = find_index(h,i,k)
-					make_same_color(left, right)
+				# if i < k:
+					# left = find_index(k,i,h)
+					# right = find_index(h,i,k)
+					# make_same_color(left, right)
 
 				# 5 (CYAN in RED)
-				if k < i and i < h:
-					left = find_index(k,k,i)
-					right = find_index(h,i,h)
-					make_same_color(left, right)
+				# if k < i and i < h:
+					# left = find_index(k,k,i)
+					# right = find_index(h,i,h)
+					# make_same_color(left, right)
 
 				# 6 (BLUE in OLIVE)
-				if k < i and i < h:
-					left = find_index(k,i,h)
-					right = find_index(h,k,i)
-					make_same_color(left, right)
+				# if k < i and i < h:
+					# left = find_index(k,i,h)
+					# right = find_index(h,k,i)
+					# make_same_color(left, right)
 
 print("so far: ", colors)
+
+# print('"missing" equations (COLORLESS)...')
+# for h in range(0, N):
+	# for k in range(0, N):
+		# if h < k:
+			# left = find_index(h,h,k)
+			# right = find_index(k,h,k)
+			# make_same_color(left, right)
+		# elif k < h:
+			# left = find_index(h,k,h)
+			# right = find_index(k,k,h)
+			# make_same_color(left, right)
+# print("so far: ", colors)
 
 # ============ fill colors with values =============
 
@@ -200,7 +216,7 @@ for group in removed_colors:
 	group.sort()					# sort the colors as well
 	for index in group:
 		(z,x,y) = find_zxy(index)
-		A[z][x][y] = 0
+		A[z][x][y] = None
 
 print("\nColors = ", colors)
 
@@ -214,7 +230,7 @@ print("\n# colors = ", num_colors, "of", N**3, "=", "{:.1f}".format(num_colors *
 
 # =========== verifications =============
 
-print("\nNumerically counting # colors = ", end="")
+print("\nNumerically counting # colors (including 0) =", end="")
 numeric_colors = []
 for k in range(0, N):
 	for i in range(0, N):
@@ -234,13 +250,25 @@ num_Errors = 0
 
 print("\nTesting....")
 debugFlag = False
+# debugFlag = True
 
-for t in range(0, 30):				# repeat test 10 times
+for t in range(0, 5000):				# repeat test 10 times
 
 	x = np.random.rand(N)
 
 	# permute x
 	σ = np.random.permutation(N)
+	# while True:
+		# h = random.randint(0,N-1)
+		# k = random.randint(0,N-1)
+		# if h != k:
+			# break
+	# l = list(range(0,N))
+	# l[h] = k
+	# l[k] = h
+	# σ = np.array(l)
+	# if debugFlag:
+		# print(l)
 	σx = x[σ]
 
 	Y = np.zeros(N)
@@ -275,4 +303,10 @@ for t in range(0, 30):				# repeat test 10 times
 	for j in range(0, N):
 		rms += (Y2[j] - σY[j])**2
 	rms = np.sqrt(rms / N)
-	print("RMS error = ", rms)
+	if debugFlag:
+		print('RMS error =', rms)
+	if rms < 1.0e-15:
+		print('.', end='')
+	else:
+		print('RMS error =', rms)
+		break
