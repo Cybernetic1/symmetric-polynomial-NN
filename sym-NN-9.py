@@ -34,8 +34,8 @@ for k in range(0, N):
 				c = find_index(k,i,j)
 				colors.append([c])
 
-print(len(colors), "colors out of", N**3)
-print("original colors = ", colors)
+print('Starting with %d colors out of N³ = %d' % (len(colors), N**3))
+print('original colors =', colors)
 
 # =================================
 # find the left color in the list
@@ -75,19 +75,26 @@ def remove_color(c):
 		else:
 			return True
 
-	colors2 = [group for group in colors if check(group)]
+	lscolors2 = [group for group in colors if check(group)]
 	print("colors2 = ", colors2)
 	colors = colors2
 
 print("1st equation (BLACK)...")
+# for h in range(0, N):
+	# for k in range(0, N):
+		# for j in range(0, N):
+			# for i in range(0, N):
+				# if i <= j and i != h and i != k and j != h and j != k:
+					# left = find_index(h,i,j)
+					# right = find_index(k,i,j)
+					# make_same_color(left, right)
 for h in range(0, N):
 	for k in range(0, N):
-		for j in range(0, N):
-			for i in range(0, N):
-				if i <= j and i != h and i != k and j != h and j != k:
-					left = find_index(h,i,j)
-					right = find_index(k,i,j)
-					make_same_color(left, right)
+		for i in range(0, N):
+			if i != h and i != k:
+				left = find_index(h,i,i)
+				right = find_index(k,i,i)
+				make_same_color(left, right)
 print("so far: ", colors)
 
 print("diagonal equations (BLACK)...")
@@ -305,7 +312,7 @@ for t in range(0, 5000):				# repeat test 10 times
 	rms = np.sqrt(rms / N)
 	if debugFlag:
 		print('RMS error =', rms)
-	if rms < 1.0e-15:
+	if rms < 1.0e-14:
 		print('.', end='')
 	else:
 		print('RMS error =', rms)
