@@ -80,21 +80,21 @@ def remove_color(c):
 	colors = colors2
 
 print("1st equation (BLACK)...")
-# for h in range(0, N):
-	# for k in range(0, N):
-		# for j in range(0, N):
-			# for i in range(0, N):
-				# if i <= j and i != h and i != k and j != h and j != k:
-					# left = find_index(h,i,j)
-					# right = find_index(k,i,j)
-					# make_same_color(left, right)
 for h in range(0, N):
 	for k in range(0, N):
-		for i in range(0, N):
-			if i != h and i != k:
-				left = find_index(h,i,i)
-				right = find_index(k,i,i)
-				make_same_color(left, right)
+		for j in range(0, N):
+			for i in range(0, N):
+				if i <= j and i != h and i != k and j != h and j != k:
+					left = find_index(h,i,j)
+					right = find_index(k,i,j)
+					make_same_color(left, right)
+# for h in range(0, N):
+	# for k in range(0, N):
+		# for i in range(0, N):
+			# if i != h and i != k:
+				# left = find_index(h,i,i)
+				# right = find_index(k,i,i)
+				# make_same_color(left, right)
 print("so far: ", colors)
 
 print("diagonal equations (BLACK)...")
@@ -118,95 +118,93 @@ for h in range(0, N):
 		for i in range(0, N):
 
 			if h < k:
-				continue
 				# 1 (CYAN in CYAN)
-				# if i > k:
-					# left = find_index(k,k,i)
-					# right = find_index(h,h,i)
-					# make_same_color(left, right)
+				if i > k:
+					left = find_index(k,k,i)
+					right = find_index(h,h,i)
+					make_same_color(left, right)
 
 				# 2 (OLIVE in OLIVE)
-				# if i > k:
-					# left = find_index(k,h,i)
-					# right = find_index(h,k,i)
-					# make_same_color(left, right)
+				if i > k:
+					left = find_index(k,h,i)
+					right = find_index(h,k,i)
+					make_same_color(left, right)
 
 				# 3 (RED in RED)
-				# if i < h:
-					# left = find_index(k,i,k)
-					# right = find_index(h,i,h)
-					# make_same_color(left, right)
+				if i < h:
+					left = find_index(k,i,k)
+					right = find_index(h,i,h)
+					make_same_color(left, right)
 
 				# 4 (BLUE in BLUE)
-				# if i < h:
-					# left = find_index(k,i,h)
-					# right = find_index(h,i,k)
-					# make_same_color(left, right)
+				if i < h:
+					left = find_index(k,i,h)
+					right = find_index(h,i,k)
+					make_same_color(left, right)
 
 				# 5 (RED in CYAN)
-				# if h < i and i < k:
-					# left = find_index(k,i,k)
-					# right = find_index(h,h,i)
-					# make_same_color(left, right)
+				if h < i and i < k:
+					left = find_index(k,i,k)
+					right = find_index(h,h,i)
+					make_same_color(left, right)
 
 				# 6 (OLIVE in BLUE)
-				# if h < i and i < k:
-					# left = find_index(k,h,i)
-					# right = find_index(h,i,k)
-					# make_same_color(left, right)
+				if h < i and i < k:
+					left = find_index(k,h,i)
+					right = find_index(h,i,k)
+					make_same_color(left, right)
 
 			elif k < h:
-				continue
 				# 1 (CYAN in CYAN)
-				# if i > h:
-					# left = find_index(k,k,i)
-					# right = find_index(h,h,i)
-					# make_same_color(left, right)
+				if i > h:
+					left = find_index(k,k,i)
+					right = find_index(h,h,i)
+					make_same_color(left, right)
 
 				# 2 (OLIVE in OLIVE)
-				# if i > h:
-					# left = find_index(k,h,i)
-					# right = find_index(h,k,i)
-					# make_same_color(left, right)
+				if i > h:
+					left = find_index(k,h,i)
+					right = find_index(h,k,i)
+					make_same_color(left, right)
 
 				# 3 (RED in RED)
-				# if i < k:
-					# left = find_index(k,i,k)
-					# right = find_index(h,i,h)
-					# make_same_color(left, right)
+				if i < k:
+					left = find_index(k,i,k)
+					right = find_index(h,i,h)
+					make_same_color(left, right)
 
 				# 4 (BLUE in BLUE)
-				# if i < k:
-					# left = find_index(k,i,h)
-					# right = find_index(h,i,k)
-					# make_same_color(left, right)
+				if i < k:
+					left = find_index(k,i,h)
+					right = find_index(h,i,k)
+					make_same_color(left, right)
 
 				# 5 (CYAN in RED)
-				# if k < i and i < h:
-					# left = find_index(k,k,i)
-					# right = find_index(h,i,h)
-					# make_same_color(left, right)
+				if k < i and i < h:
+					left = find_index(k,k,i)
+					right = find_index(h,i,h)
+					make_same_color(left, right)
 
 				# 6 (BLUE in OLIVE)
-				# if k < i and i < h:
-					# left = find_index(k,i,h)
-					# right = find_index(h,k,i)
-					# make_same_color(left, right)
+				if k < i and i < h:
+					left = find_index(k,i,h)
+					right = find_index(h,k,i)
+					make_same_color(left, right)
 
 print("so far: ", colors)
 
-# print('"missing" equations (COLORLESS)...')
-# for h in range(0, N):
-	# for k in range(0, N):
-		# if h < k:
-			# left = find_index(h,h,k)
-			# right = find_index(k,h,k)
-			# make_same_color(left, right)
-		# elif k < h:
-			# left = find_index(h,k,h)
-			# right = find_index(k,k,h)
-			# make_same_color(left, right)
-# print("so far: ", colors)
+print('"missing" equations (violet and green)...')
+for h in range(0, N):
+	for k in range(0, N):
+		if h < k:
+			left = find_index(h,h,k)
+			right = find_index(k,h,k)
+			make_same_color(left, right)
+		elif k < h:
+			left = find_index(h,k,h)
+			right = find_index(k,k,h)
+			make_same_color(left, right)
+print("so far: ", colors)
 
 # ============ fill colors with values =============
 
@@ -317,3 +315,32 @@ for t in range(0, 5000):				# repeat test 10 times
 	else:
 		print('RMS error =', rms)
 		break
+
+## Special test for N = 4 (used for debugging)
+## ===========================================
+# x = np.array([1.0, 2.0, 3.0, 4.0])
+# σ = np.array([0, 2, 1, 3])
+# σx = x[σ]
+
+# print('x =', x)
+# print('σ =', σ)
+# print('σx =', σx)
+
+# Σ = 0.0
+# for j in range(0, N):
+	# for i in range(0, N):
+		# if i <= j:
+			# Σ += A[1][i][j] * x[i] * x[j]
+			# print('A[1][%d][%d] = %f' % (i,j,A[1][i][j]))
+# Y1 = Σ
+
+# Σ = 0.0
+# for j in range(0, N):
+	# for i in range(0, N):
+		# if i <= j:
+			# Σ += A[2][i][j] * σx[i] * σx[j]
+			# print('A[2][%d][%d] = %f' % (i,j,A[2][i][j]))
+# Y2 = Σ
+
+# print('Y1 =', Y1)
+# print('Y2 =', Y2)
