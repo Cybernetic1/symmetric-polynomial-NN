@@ -42,7 +42,7 @@ print('original colors =', colors)
 # find the right color in the list
 # join the 2 lists
 def make_same_color(left, right):
-	print(left, "=", right, end=":   ")
+	# print(left, "=", right, end=":   ")
 	global colors
 	colors2 = []
 	temp1 = temp2 = []
@@ -54,7 +54,7 @@ def make_same_color(left, right):
 		else:
 			colors2.append(group)
 	temp = temp1 + temp2
-	print (temp)
+	# print (temp)
 	colors2.append(temp)
 	colors = colors2
 
@@ -197,10 +197,12 @@ print('"missing" equations (violet and green)...')
 for h in range(0, N):
 	for k in range(0, N):
 		if h < k:
+			# VIOLET
 			left = find_index(h,h,k)
 			right = find_index(k,h,k)
 			make_same_color(left, right)
 		elif k < h:
+			# GREEN
 			left = find_index(h,k,h)
 			right = find_index(k,k,h)
 			make_same_color(left, right)
@@ -253,6 +255,24 @@ print(numeric_colors)
 
 num_Errors = 0
 
+print('\nTesting off-diagonal weights hypothesis...')
+
+ɣ = δ = None
+for k in range(0, N):
+	for i in range(0, N):
+		for j in range(0, N):
+			if i < j:				# if off-diagonal:
+				if k != i and k != j:
+					if not ɣ:
+						ɣ = A[k,i,j]
+					if A[k,i,j] != ɣ:
+						print('hypothesis wrong: A[%d,%d,%d]=%f' % (k, i, j, A[k,i,j]))
+				else:
+					if not δ:
+						δ = A[k,i,j]
+					if A[k,i,j] != δ:
+						print('hypothesis wrong: A[%d,%d,%d]=%f' % (k, i, j, A[k,i,j]))
+
 print("\nTesting....")
 debugFlag = False
 # debugFlag = True
@@ -284,14 +304,14 @@ for t in range(0, 5000):				# repeat test 10 times
 		for j in range(0, N):
 			for i in range(0, N):
 				if i <= j:
-					Σ += A[k][j][i] * x[i] * x[j]
+					Σ += A[k,i,j] * x[i] * x[j]
 		Y[k] = Σ
 
 		Σ = 0.0
 		for j in range(0, N):
 			for i in range(0, N):
 				if i <= j:
-					Σ += A[k][j][i] * σx[i] * σx[j]
+					Σ += A[k,i,j] * σx[i] * σx[j]
 		Y2[k] = Σ
 
 	σY = Y[σ]					# real answer
@@ -315,6 +335,8 @@ for t in range(0, 5000):				# repeat test 10 times
 	else:
 		print('RMS error =', rms)
 		break
+
+print('test passed')
 
 ## Special test for N = 4 (used for debugging)
 ## ===========================================
