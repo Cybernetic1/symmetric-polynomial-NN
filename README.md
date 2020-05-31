@@ -1,4 +1,4 @@
-# symmetric-NN
+# Symmetric Neural Networks (with polynomial activation functions)
 Symmetric (permutation-invariant) neural networks, in Python 3.6
 
 matrix-multiply-test.py
